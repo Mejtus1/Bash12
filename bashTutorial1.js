@@ -127,4 +127,60 @@ more file1 (pages throught a bunch of text in the terminal)
 less file1 (shows less text but we can move through it, search contents ...)
 
                             editing files 
+nano is the most used linux text bash editor 
+you use nano file2 (opens up a file and you can edit contents of a file)
+
+
+
+
+//........................................................................//
+//........................................................................//
+                                sudo 
+- means super user do, has a total privilages on operating system
+sudo updatedb (updates databes, and needs root privilages)
+- in ubuntu to act as a root user for a while you can use:
+sudo -s (for a minute or two)
+- instead of Dollar sign behind our name is HASHTAG
+- the rm command as a root will erase anything on a system
+- su command changes you to another user
+su - cindy (I want to become cindy and lead her settings)
+su cindy (says that you are cindy but you are in your directory still)
+
+su (attemptes you to log as a root user)
+su - (root home directory)
+
+sudo apt update (updates your system when you log in)
+
+
+
+//........................................................................//
+//........................................................................//
+                            users
+users (shows users of system)
+id (shows all the important information about my account)
+
+
+
+
+//........................................................................//
+//........................................................................//
+                            File permissions 
+ls -l (shows all files with permissions)
+----------
+drwxrwxrwx = everyone has every permission and it is a directory 
+drwx-rw-rw- = 
+first is - or d 
+- means this is file or directory
+2-3-4 are rwx 
+- means user rights read-write-execute
+5-6-7 are rwx
+- means group rights read-write-execute
+8-9-10 are rwx
+- means everyone rights read-write-execute
+
+to change permissions are 
+chmod +r file1
+
+CTRL + c kills a command 
+killall firefox (turns off)
 
