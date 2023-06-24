@@ -53,3 +53,78 @@ using cd tap key fills in your directory names
 //........................................................................//
 //........................................................................//
                             Push and Get 
+/* Lets say we are in Downloads folder, and we need to get to another folder
+that is way awaay on our file system
+- we are in downloadsd and we need to get to /etc
+command for that is pushd 
+pushd /etc (puts us in /etc directory ) - now we are in /etc directory
+now we can use command popd and it gets us back to the downloads directory
+
+
+//........................................................................//
+//........................................................................//
+                            Understanding Files
+- linux doesnt use file extensions in command line 
+- when we want to know what file format are our files we use file command
+file Audio = mp4 (audio)
+file .config = direcrtory (containg files)
+file .ssr = directory (contains files)
+
+
+
+//........................................................................//
+//........................................................................//
+                            Locating files
+- locates files in our system (we are looking for fstab file and have no idea
+    where it is located)
+locate fstab (gives us everything that has fstab in it on our file system)
+- locate uses database, we need to update that database
+- command for updating database
+sudo updatedb
+
+                            which command
+- you know what a command is but you dont know where it is or if it is installed
+which cal = /usr/bin/cal (yes it is in the system in this directory)
+
+
+
+//........................................................................//
+//........................................................................//
+                                History 
+- bash keeps track of all the commands that you issued to the system
+up arrow on the keyboard 
+history (type in) and ender
+
+
+
+//........................................................................//
+//........................................................................//
+            Making a directory, creating files, copy files 
+mkdir VickyDir (creates directory)
+touch VickyFile (creates file)
+cp /.bashrc bashrc /copyies bashrc file into our currenty directory 
+(wil make a copy that you are currently into)
+mv bashrc Vickydir (moves bashrc file and moves it into Vickydir)
+- remove command (there is no recicble bin, the data you remove are gone)
+rm * (removes all the files in our directory)
+rm file* (removes all the fiels that start with the word file)
+-removing directories is different than files
+rm -r (remove everything in the directory including other directories)
+rmdir dir1 dir2 dir3 
+
+//........................................................................//
+//........................................................................//
+                        listing file contents 
+cat file1 (reads everything in a file)
+cat >> file2 (anathing that cat comes up with i want it to stick to file2)
+- we printed what we wrote to the text in the file 
+- cat >> is used to create small text files fast 
+cat file1 file2 
+- outputs contents of file1 and under that file2 
+
+                            more and less 
+more file1 (pages throught a bunch of text in the terminal)
+less file1 (shows less text but we can move through it, search contents ...)
+
+                            editing files 
+
