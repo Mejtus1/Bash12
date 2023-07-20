@@ -113,3 +113,9 @@ Finding files
 find - find files in directory tree
 (to find all files within directory starting with name a)
 find . -name "a.txt" = . means search within working directory
+
+
+
+File and Directory Management Commands
+Creating directories
+mkdir - make directory
