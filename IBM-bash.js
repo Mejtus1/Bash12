@@ -54,3 +54,40 @@ Creating and editing files
 Create a new text file and open it with nano:
 nano file_name.txt
 */
+
+
+
+//Informational commands
+//User informational commands
+/*
+User information 
+whoami - returns user name 
+id - identity (returns user or group ID)
+
+System information 
+uname - returns name of the operating system
+uname -s -r = returns both OS name and its version 
+uname -v = returns more detailed inofrmation 
+
+Displaying disk usage
+df -h ~ = displays mounted disks mounted on home directory 
+        = in linux a disk can be mounted onto a specific directory
+df -h = outputs all disk usage on all filesystems
+
+Displaying current running processes
+ps -e = lists all processes on system regardles of which user started them 
+
+Monitoring system health and status
+top(table of processes) - Task manager 
+top -n 3 = shows a table running processes of top 3 most resource heavy processes
+
+Printing strings and variable values
+echo = returns nothing 
+echo Hello = terminal returns Hello 
+
+Getting date information 
+date - displays system date and time 
+
+Viewing the manual 
+man(manual) - shows manual for any command 
+man id - displays manual for ID command 
