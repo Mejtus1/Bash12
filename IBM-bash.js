@@ -91,3 +91,25 @@ date - displays system date and time
 Viewing the manual 
 man(manual) - shows manual for any command 
 man id - displays manual for ID command 
+
+
+
+
+File and Directory navigation commands
+Listing your directory contents
+ls - list files and directories
+ls Downloads - lists contents of downloads folder
+ls -l = shows child files in directories in more detailed format 
+
+Finding your working directory
+pwd - prints working directory
+
+Navigating your directories
+cd - change directory
+cd ~ - absolute path to dome 
+cd /Users/me/Documents/Notes/ = you can use absolute path to a specific directory
+
+Finding files
+find - find files in directory tree
+(to find all files within directory starting with name a)
+find . -name "a.txt" = . means search within working directory
