@@ -119,3 +119,49 @@ find . -name "a.txt" = . means search within working directory
 File and Directory Management Commands
 Creating directories
 mkdir - make directory
+
+removing files and directories
+rm(remove) - remove file or directory
+rm file1 - removes file1 from our directory
+rm -r file1 = removes file along with all its child contents
+
+mkdir empty folder = creates empty directory
+rmdir empty_folder = removes directory only if is empty
+
+Creating files
+touch - create empty file, update file date
+touch a.txt, b.txt, c.txt, d.txt
+touch a.txt2
+date -r a.txt2 = outputs time 
+if we use the touch command the last modified date would be current time 
+
+Copying files and directories
+cp(copy) = copy file or directory to destination 
+cp /source/file /destination/filename
+cp -r /source/directory/ /destination/directory/
+
+example: 
+cp notes.txt Documents
+ls Documents = copy of notes.txt inside of it 
+(cp defaults to your current directory)
+
+cp -r Documents Docs_copy
+we need to use -r after cp to copy a directory with its child files and other directories
+
+Moving files and directories
+mv(move) - Move a file or directory
+mv /source/file /destination/dir/
+mv /source/directory/ /destination/directory/
+
+example
+mv my_script.sh Scripts
+my_script.sh is now inside Scripts
+
+mv Notes Scripts Documents
+moves Notes and Scripts directories from our current wokring direcotry to Documents direcotry
+
+Managing file permissions
+chmod(change mode) - change file permissions
+ls -l my_script.sh - outputs rwx permission for user, group and ....
+chnod +x my_script.sh - we add executable permissions 
+
