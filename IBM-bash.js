@@ -173,3 +173,18 @@ chmod(change mode) - change file permissions
 ls -l my_script.sh - outputs rwx permission for user, group and ....
 chnod +x my_script.sh - we add executable permissions 
 
+Exercise - managing and navigating files and directories
+pwd = the absolute path of your present working directory
+ls = list the files and directories in the current directory
+ls -la = lists ALL the files and directories
+mkdir = create a new directory
+cd = changes directory
+cd ..  = a shortcut that refers to the parent directory of your current directory
+touch myfile.txt = create an empty file myfile.txt
+find = command conducts a search of the entire directory tree starting from the given directory name.
+find /etc -name \'*.txt\' = The rm command is used to delete files, ideally with the -i option, which creates 
+= a prompt to ask for confirmation before every deletion.
+cp /tmp/user-info.txt user-info.txt 
+rm -i myfile.txt
+You can use the cp command to copy user-info.txt, 
+which is now in your /tmp directory, to your current working directory:
