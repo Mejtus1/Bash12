@@ -92,6 +92,14 @@ Viewing the manual
 man(manual) - shows manual for any command 
 man id - displays manual for ID command 
 
+Exercise
+whoami = It will display the user name
+uname -a = prints all the system information.
+df -h = display available disk space.
+ps -e = display all of the processes running on the system.
+top -n 10 = displays a table of detailed information related to the processes
+top + shift M = displays a table of detailed information of processes sorted By memory usage
+date = command displays the current date and time.
 
 
 
