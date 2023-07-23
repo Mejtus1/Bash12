@@ -188,3 +188,34 @@ cp /tmp/user-info.txt user-info.txt
 rm -i myfile.txt
 You can use the cp command to copy user-info.txt, 
 which is now in your /tmp directory, to your current working directory:
+
+
+
+Managing File Permisions and Ownership
+Why do we need file permissions and ownership?
+Linux is a multi-user operating system. This means that by default, 
+other users will be able to view any files you store on the system.
+
+File ownership and permissions
+There are three possible levels of file ownership in Linux: user, group, and other.
+ls -l my_new_file = displays the file's (default) permissions:
+rw-r--r--
+The first three characters (rw-) define the user permissions, 
+the next three (r--) the group pemissions, and the final three (r--) the other permissions.
+
+Directory permissions
+The permissions for directories are similar but distinct for files. 
+Though directories use the same rwx format, the symbols have slightly different meanings.
+Directory Permission	Permissible action(s)
+r	                    List directory contents using ls command
+w	                    Add or remove files or directories
+x	                    Enter directory using cd command
+
+
+Making a file private
+You can revoke read permissions from your group and all other users
+chmod go-r my_new_file
+In the chmod command, go-r is the permission change to be applied, 
+which in this case means removing for the group (g) and others (o) the read (r) permission. 
+The chmod command can be used with both files and directories.
+
