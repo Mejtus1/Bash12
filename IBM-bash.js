@@ -219,3 +219,17 @@ In the chmod command, go-r is the permission change to be applied,
 which in this case means removing for the group (g) and others (o) the read (r) permission. 
 The chmod command can be used with both files and directories.
 
+
+Viewing file contencts 
+cat - (catenate) = print entire file contants
+cat numbers.txt
+more - print file contants page by page
+more file.txt
+head - print the first 10 lines 
+head file.txt
+
+wc (word count) = count characters, words, lines
+wc pets.txt = 7 7 28 pets.txt (returns 7 lines 7 words and 28 characters)
+wc -l pets.txt = view only line count 
+wc -w pets.txt = view only word count
+wc -c pets.txt = view only character count 
