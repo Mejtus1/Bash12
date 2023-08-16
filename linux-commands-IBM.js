@@ -48,3 +48,18 @@ shutdown -h now
 shutdown -h +10 = shutdown system after 10 minutes 
 shutdown -r now = reboot the system using shutdown command
 shutdown -fr now = force the filesystem check during reboot 
+
+-----------------------------------------------------------------------------------------
+ftp IP/hostname = to view the file names located on the remote server before downloading
+ps: used to display information about the processes running in the system
+
+free: command used to show free memory in our system
+free -g = shows free memory in gb
+
+df: displays the file system disk space usage
+df -k = displays the output in bytes
+df -h = displays the output in human readable form 
+df -T = displays what type of file system is being used 
+
+kill: terminate a process
+ps -ef = we need process ID we want to kill 
