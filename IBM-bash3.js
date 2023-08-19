@@ -80,3 +80,59 @@ Jeff Grossman
 
 As you will soon see, the read command is particularly useful in shell scripting. You can use it within a shell script to prompt users to input information, which is then stored in a shell variable and available for use by the shell script while it is running. You will also learn about command line arguments, which are values that can be passed to a script and automatically assigned to shell variables.
 
+--------------------------------------------------------------------------------------------
+SCRIPTING BASICS 
+# This script accepts the user\'s name and prints 
+# a message greeting the user
+
+# Print the prompt message on screen
+echo -n "Enter your name :"	  	
+
+# Wait for user to enter a name, and save the entered name into the variable \'name\'
+read name				
+
+# Print the welcome message followed by the name	
+echo "Welcome $name"
+
+# The following message should print on a single line. Hence the usage of \'-n\'
+echo -n "Congratulations! You just created and ran your first shell script "
+echo "using Bash on IBM Skills Network"
+
+We save this script inside file greet.sh
+then run command bash greet.sh
+
+Enter your name :Mejtus
+Welcome Mejtus
+Congratulations! You just created and ran your first shell script using Bash on IBM Skills Network
+- this is the output of our first script 
+
+
+
+-------
+Find the path to the interpreter
+The which command helps you find out the path of the command bash
+which bash = returns /bin/bash
+
+#! /bin/bash we added this line which refferences our interpreter!!!!!!!!!!!!!!!!!!!!!!!
+# This script accepts the user\'s name and prints 
+# a message greeting the user
+
+# Print the prompt message on screen
+echo -n "Enter your name :"	  	
+
+# Wait for user to enter a name, and save the entered name into the variable \'name\'
+read name				
+
+# Print the welcome message followed by the name	
+echo "Welcome $name"
+
+# The following message should print on a single line. Hence the usage of \'-n\'
+echo -n "Congratulations! You just created and ran your first shell script "
+echo "using Bash on IBM Skills Network"
+
+After checking adding to our script we need to check and add executable permissions to our file
+chmod +x greet.sh
+chmod u+x greet.sh
+ls -l greet.sh
+
+At last we execute the script ./greet.sh
