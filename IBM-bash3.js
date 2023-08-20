@@ -136,3 +136,24 @@ chmod u+x greet.sh
 ls -l greet.sh
 
 At last we execute the script ./greet.sh
+--------------------------------------------------------------------------------------
+Exercise
+
+create greetnew.sh file
+
+#! /bin/bash
+echo -n "Enter a first name :"
+read firstname
+echo -n "Enter a last name:"
+read lastname
+echo "Hello $firstname $lastname" 
+
+output:
+echo -n "Congratulations! You just created and ran your first shell script "
+echo "using Bash on IBM Skills Network"
+Enter a first name :Vicky
+Enter a last name:Sev
+Hello Vicky Sev
+Congratulations! You just created and ran your first shell script using Bash on IBM Skills Network
+
+
