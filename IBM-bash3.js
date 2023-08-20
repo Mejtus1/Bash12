@@ -156,4 +156,41 @@ Enter a last name:Sev
 Hello Vicky Sev
 Congratulations! You just created and ran your first shell script using Bash on IBM Skills Network
 
+---------------------------------------------------------------------------------------------
+Filters, Pipes and variables
+| - pipe command
+- for chaining filter commands
+command1 | command2 = output of command1 is input of command2
 
+shell variables 
+- scope limited to shell 
+set = list all shell variables
+set | head -4 = show first 4 shell commands
+
+Defining shell variables
+var_name=value examples:
+GREETINGS="Hello"
+echo $GREETINGS
+AUDIENCCE="World"
+echo $GREETINGS $AUDIENCE
+
+unset var_name = deletes var_name
+unset AUDIENCE = deletes audience variable 
+
+Enviromental variables
+- persist in any child processes spawned by the shell in which they originate
+export var_name
+export GREETINGS = makes GREETINGS an enviroment variable 
+env = lists all environment variables
+evn | grep "GREE" = outputs: GREETINGS="Hello"
+
+What are pipes?
+Put simply, pipes are commands in Linux which allow you to use the output of one command as the input of another.
+[command 1] | [command 2] | [command 3] ... | [command n]
+
+Pipe examples
+sort - sorts the lines of text in a file and displays the result
+uniq - prints a text file with any consecutive, repeated lines collapsed to a single line
+sort pets.txt | uniq
+Since sort sorts all identical items consecutively, and uniq removes all consecutive duplicates, 
+combining the commands prints only the unique lines from pets.txt
