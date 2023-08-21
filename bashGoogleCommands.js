@@ -43,3 +43,32 @@ Similar to the Windows show properties, the ls command will show us the detailed
 11. ls -l -a/ ( = Dash a or all option. This shows us all the files in the directory including the hidden files.
 Both work the exact same way. The order of the flag determines which order it goes in.)
 - You can hide a file or directory by pre-pending a dot to it. Like the file shown here .I_am_hidden 
+
+12. pwd (Print working directory or PWD again shows us the current path we're in)
+(shows current directory we are now in) 
+
+13. cd (change directory, same like in powershell) 
+cd /home/qwerty/Desktop (or we can use shortened version) cd ../Deskotop     cd../Documents
+
+14. mkdir folder_name (same as in windows) (Similar to Windows, you can also use quotes to encompass an entire file name. 
+How do you think you would make a directory called my cool folder in Linux with spaces? mkdir my\ cool\ folder. 
+There it is. Or, mkdir ' my cool folder'. Works as well. If you guessed this, you're right.)
+
+15. clear (clears bash but commands from history stay, we can use up or down keys and cltr R to see history of commands) 
+
+16. cp file_name ~/Desktop (In Bash, the exact same Windows command can be used for copying files.) 
+(this command copies our choosen file to the desktop) 
+(I have files called Pizza.png, Soda.png, Cake.png. So I can use copy *.png, then the desktop directory.)
+cp *.png ~/Desktop (example: than we can look at the desktop again with command ls ~/Desktop, and see copied files there) 
+
+17. cp -r 'file_name' ~/Desktop ( file_name may be in aposthropes to specify it) 
+(The same copy rules apply in bash. If we want to copy over a directory, 
+we have to recursively copy over the directory to get all the contents. The flag for recursive copy is dash r. 
+If I want to copy over my cat pictures folder to the desktop, I can do something like this.
+
+18. mv file_name new_file_name (renames document) (Mv, or move, can rename and move files in directories.)
+
+19. mv new_file_name ~/Documents (moves new_file_name to the Documents from Desktop (which is directory we are now in)) 
+
+20. mv *_document.txt ~/Desktop (Using wildcards, we can move multiple files at once, just like Windows.)
+(moves all our documents to the desktop) 
