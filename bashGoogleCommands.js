@@ -200,3 +200,26 @@ $ lsusb - Lists devices installed on the USB bus
 $ lsscsi - Lists SCSI devices, such as hard drives
 $ lpstat -p - Lists all printers and whether they are enabled
 $ dmesg - Lists devices recognized by the kernel
+
+LINUX FTP SERVER 
+On Linux, the configuration files for the installed services are located in the /etc directory.
+vsftpd (ftp server, it is enabled by default when we install it, but we neet to set the premissions for it to function properly) 
+56. sudo apt install vsftpd (installs the service) (the service is already running) 
+57. service vsftpd status (shows us if the service is running) 
+58. lftp localhost (by this command we verify that the service is running by connecting to the FTP server with an FTP client) 
+Lftp is an ftp client program that allows us to connect to an ftp server. When we tell it to connect to local host, it'll try to connect 
+to the ftp server running on local host. Now, let's try to run the ls command to list the contents of the current directory.
+You are now in FTP service and type in ls
+for exit type in exit 
+(the service is failing because it needs password and we dont have them) (for it to function we need to provide anonymous connenctions) 
+59. sudo vim /etc/vsftpd.conf (this opens up the ftp config file) - then we change anonymous enable from no to yes 
+We've made the change but we aren't done yet. If we try to connect again, ls will still fail.
+Play video starting at :3:58 and follow transcript3:58
+Ls.
+Play video starting at :4:3 and follow transcript4:03
+It failed, and then we hit exit. This will also happen with other services because most services read their configuration when they start,
+and then keep it in memory while they're running. In order for our service to re-read the configuration, we need to tell it to reload.
+Reloading means that the service re-reads the configuration file without having to stop and start. That way, ongoing connections aren't
+interrupted, but new connections will use a new configuration.
+60. sudo service vsftpd reload 
+then we can try to connect again by lftp localhost and it works 
