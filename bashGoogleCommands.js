@@ -72,3 +72,36 @@ If I want to copy over my cat pictures folder to the desktop, I can do something
 
 20. mv *_document.txt ~/Desktop (Using wildcards, we can move multiple files at once, just like Windows.)
 (moves all our documents to the desktop) 
+
+21. rm file_name (is used to remove files) 
+(Next let's try removing a directory. If you thought to yourself that we need to also recursively remove this directory, you'd be right)
+rm -r folder_name
+
+22. less file.name = shows us all cointains of the file = you are lounched into an interactive shell, most common keys - up and down, pg up and pg down, 
+g moves to the beginning,capital G moves us to the end of the file, If i 
+23. you time in /(word you wanna search) and you can search text file for the specific word, (like this) 
+/lookinglookword
+(q lets you quit of view file shell) 
+
+24. head (file.name) -shows you first ten lines of the file 
+25. tail (file.name) - shows last 10 lines of the file 
+
+26. Nano (text editor) - you can use it in Bash = just type in Nano file.name and it will take you to the Nano program with the text file in it 
+(down should be shown commands) 
+
+27. Grep thing.we.are.searching.for file.name 
+(if you want to know if the certafin file exists in a directory or a word is in the file) 
+grep word.we.are.looking.for *.txt or * or *pictures
+(you can use it too to search throught multiple files) 
+
+28. > (standard out redirector operator, like in windows is used in sending output of our commands)
+echo woof > file.name (sends woof to the file.name file) (overwrites every text in the file.name file) 
+29. >> (functions the same like upper example but now it DOESNT overwrite the files in the folder, only adds to the existing files) 
+
+30. < (standart in operator - you get input from the files you select)
+
+31. cat /etc/sudoers (can be only acessed by root account) 
+We can log in as root and then run this command, no problem. But it can be really dangerous to always be in root. 
+Since root, like our local administrator account on Windows has unrestricted access on the machine. 
+If we make even one mistake, we could delete or modify something important, and that's not good. 
+So instead of logging in its root, we can tell the shell that we want to run this one command as root.
