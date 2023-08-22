@@ -223,3 +223,11 @@ Reloading means that the service re-reads the configuration file without having 
 interrupted, but new connections will use a new configuration.
 60. sudo service vsftpd reload 
 then we can try to connect again by lftp localhost and it works 
+
+LINUX DNSMASQ
+dnsmasq; a program that provides DNS, DHCP, TFTP and PXE services in a simple package.
+61. sudo apt install dnsmasq (installs DNSMASQ, it is enabled with basic functionality) - it provides cache for DNS queries, that means 
+you can make DNS request to it
+
+62. dig www.examlpe.com @localhost (we ask our DNS server which runs in local host for address for www.example.com
+dig command - query DNS servers and lets us see their answers 
