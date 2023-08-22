@@ -105,3 +105,25 @@ We can log in as root and then run this command, no problem. But it can be reall
 Since root, like our local administrator account on Windows has unrestricted access on the machine. 
 If we make even one mistake, we could delete or modify something important, and that's not good. 
 So instead of logging in its root, we can tell the shell that we want to run this one command as root.
+
+32. SUDO command (or in londer version SUPERUSERDO) runs one command as root user without being in root mode, you need to ender password
+sudo cat /etc/sudoers
+
+33. sudo su - (substitute user) - changes user if we dont specify user it changes to root user
+
+34. cat /etc/group (You can view who has access to run sudo. This is also how you view memberships for all groups.)
+
+35. cat/etc/passwd (The first field is the username and the second field is the user password. The password isn't actually stored in 
+this file. It's encrypted and stored in a different file, just like our group ID password. The third field here is the user id or UID. 
+Similar group IDS, user IDs or how our system identifies a user, not by the username. Root has a UID of zero. 
+That's basically how you view users and groups in Linux.
+
+36. passwd (linux user name) - user password change (then we enter current password and after that new password) 
+
+37. sudo passwd -e (username) - (we want to change users password when he next time logs in) 
+
+38 sudo useradd (user name) - (adds user to linux system) 
+
+39. sudo userdel (user name) - (deletes user) 
+
+40. ls -l (filename) - shows premissions and who created the file and user premissions (rwxrw) - read, write, execute
