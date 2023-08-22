@@ -186,3 +186,17 @@ But it won't install or upgrade packages for you.)
 55. (To update the kernel and other packages, we use our nifty apt command with the option full dash upgrade. 
 Before running this command, remember to update your application sources with APT update. Sudo apt update. 
 Now, we can run sudo apt full upgrade.)
+
+/dev/sda - First SCSI drive
+/dev/sr0 - First optical disk drive 
+/dev/usb - USB device
+/dev/usbhid - USB mouse
+/dev/usb/lp0 - USB printer
+/dev/null - discard
+
+$ ls /dev - Lists all devices in the /dev folder 
+$ lscpci - Lists devices installed on the PCI bus 
+$ lsusb - Lists devices installed on the USB bus
+$ lsscsi - Lists SCSI devices, such as hard drives
+$ lpstat -p - Lists all printers and whether they are enabled
+$ dmesg - Lists devices recognized by the kernel
