@@ -127,3 +127,49 @@ That's basically how you view users and groups in Linux.
 39. sudo userdel (user name) - (deletes user) 
 
 40. ls -l (filename) - shows premissions and who created the file and user premissions (rwxrw) - read, write, execute
+
+41. Modifying premissions first we ls -l (filename) 
+chmod u+x (filename) (adds premission) u = owner x = executable 
+chmod u-x (filename) (takes away premission) 
+chmod u+rx (filename) (gives two premissions read and execute) 
+
+42. sudo chmod (user) (filename) - (changes owner of the file) 
+
+43. sudo chgrp (group owner) (file name) - changes group of the file 
+
+44. sudo dpkg -i atom-amd64.deb (installing package - konkretne atom-amd64.deb - debian package) 
+-i = install package 
+
+45. sudo dpkg -r atom (removes atom from 
+-r = remove package 
+
+46. dpkg -l (lists debian packages installed on your machine) 
+dpkg -l = lists 
+
+47. 7zip -e file_name (example: my_file.tar) 
+(extracts file using 7zip) 7zip = packege dependenci
+
+48. WHEN you download program in linux and we have stored it in desktop directory 
+- so use command ls to see it, yes it is in desktop (google-chrome-stable_current_amd64.deb)
+to start installing it use command: 
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+(we may get dependency dpkg problem - this means it is depended on another packege that is not currently installed on this machine) 
+- it writes us what we need to download so we just download it 
+Common Linux package types include: 
+
+.deb - Debian packages
+.rpm - Redhat packages
+.tgz - TAR archive file 
+
+49. INstalling GIMP
+sudo apt install gimp ( then y = yes ) 
+
+50. removing this package 
+sudo apt remove gimp 
+repositories are servers that act as a central storage for packages 
+we can see those repositories on linux machine with:
+51. cat etc/apt/sources.list 
+52. sudo apt update
+(If you want to get the latest package updates, you should update your package repositories with the APT update, and then, 
+APT upgrade commands. The APT update command updates the list of packages in your repositories, so you get the latest software available. 
+But it won't install or upgrade packages for you.)
