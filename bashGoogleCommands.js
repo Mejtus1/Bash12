@@ -173,3 +173,16 @@ we can see those repositories on linux machine with:
 (If you want to get the latest package updates, you should update your package repositories with the APT update, and then, 
 APT upgrade commands. The APT update command updates the list of packages in your repositories, so you get the latest software available. 
 But it won't install or upgrade packages for you.)
+
+52. sudo apt update
+(If you want to get the latest package updates, you should update your package repositories with the APT update, and then, 
+APT upgrade commands. The APT update command updates the list of packages in your repositories, so you get the latest software available. 
+But it won't install or upgrade packages for you.)
+
+53. ls -l dev (When a device is connected to your computer, a device file is created in the /dev directory.)
+
+54. uname -r (If you use the dash r flag for kernel release, you'll see what kernel version you have.)
+
+55. (To update the kernel and other packages, we use our nifty apt command with the option full dash upgrade. 
+Before running this command, remember to update your application sources with APT update. Sudo apt update. 
+Now, we can run sudo apt full upgrade.)
