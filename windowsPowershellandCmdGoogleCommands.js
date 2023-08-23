@@ -122,3 +122,37 @@ rm secure_file 2> $null.
 Now, our output is filtered from error messages.
 When we want to delete secure files we get error messages, we can throw away these error messages or send them to other output 
 rm secure_file 2> errors.txt (sending error messages to new file) 
+
+CLI = command line interface 
+
+23. Get-LocalUser (shows users of the computer and their place in hierarchy - administratr, user......) 
+24. Get-LocalGroup (shows a list of local groups on the machine) 
+25. Get-LocalGroupMember (When you want to look into specific group) 
+Get-LocalGroupMember Administrators (Shows who is in the administrators group) 
+26. Net User Name * (changes password for user) Name = your name on the pc as user 
+27. net User Name /logonpasswordchg:yes ((You are administrator)Forces User to change their password on their next log on) 
+/logonpasswordchg:yes
+28. net user name * /add (adds a user to our System) practical example: 1.net user Adria * /add 2.net user Adria /logonpasswordchg:yes
+(So we create in powershell adrias account for our system and then add command for her to change her password next time she logs in)
+29. net user name /del (removing users from system) 
+Remove-LocalUser Name (----)
+30. icacls C:\Users\matus\Desktop\ (shows who has access to the desktop) 
+31. icacls /? (shows and explains shortened meanings from icacls above) 
+examples are: F - full access, (OI) - object inherit, (CI) - container inherit 
+(If I create new files or objects inside my Desktop folder, they'll inherit this DACL.)
+N - no access
+F - full access
+M - modify access
+RX - read and execute access
+R - read-only access
+W - write-only access
+D - delete access
+32. icacls ’C:\Folder Name\’ /grant ’Everyone(OR)(CI)(R)’ (Grants specific rights to other users or system to the folder) 
+example: (after we add rights we can check them with previous commands (30.)) icacls ’C:\Folder Name’ (shows who has rights to specific folder) 
+33. icacls ’C:\Folder Name\’ /grant ’Authenticated Users(OR)(CI)(R)’ (grands specific rights to the specific users which are authenticated
+users in this example)
+34. icacls ’C:\Folder Name\’ /remove Everyone (Removes every ones rights and only one left are administrators) 
+35. icacls C:\Windows\Temp  (This directory is used to hold temporary files for all users in the system.)
+WD, or create files like data, AD, create folders and append data, and S for synchronize.
+creator owner is a special user that represents the owner of whichever file the DACL applies to. 
+In this directory, and all subdirectories, whoever owns a file or folder has full control of it. 
