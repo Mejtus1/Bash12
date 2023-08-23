@@ -249,3 +249,20 @@ C = number of children processes
 
 69. kill -TSTP 10454(turns process on pause, suspends it) (CTRL Z) 
 70. kill - CONT 10454 (turns process from pause to running) 
+
+71. ps -x (snapshot of current processes running on machine) 
+PID = process ID 
+STAT (R = running, S = sleeping, T = stopped) 
+TIME = total time the process has taken of CPU 
+COMMAND = name of the command we are running 
+
+72. ps -ef | grap Chrome(to see if the process is running, it gives us the list of processes with name Chrome in them) 
+
+73. ls -l /proc (every process in linux has a file, to look into the files that respond to the processes we can look into /proc directory)
+
+74. cat /proc/1805/status (tells us even more information about process state)  
+
+75. top (shows task and how much of resources it takes) (hit q key to quit) 
+
+76. uptime - This command shows information about the current time, how long your system's been running, how many users 
+are logged on, and what the load average of your machine is.
