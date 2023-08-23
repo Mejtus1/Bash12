@@ -156,3 +156,28 @@ users in this example)
 WD, or create files like data, AD, create folders and append data, and S for synchronize.
 creator owner is a special user that represents the owner of whichever file the DACL applies to. 
 In this directory, and all subdirectories, whoever owns a file or folder has full control of it. 
+
+-------------------------------------------------------------------------------------------------------------------------------
+SOFTWARE DISTRIBUTION 
+Running exe files from the command line is pretty simple.
+You could also just type the absolute path of the exe from wherever you are in the file system, like this:
+C:\users\matus\desktop\hello.exe. 
+36. Compress-archive -Path C:\users\matus\FileName ~\Desktop\NewArchiveName.zip (It takes everything from the first file and compresses
+it to the archive file .zip, .rar. or tar) 
+we have many archive types but typical ones are .zip, .rar. tar 
+Archives help us take, send or recieve many files in one single file bundled together. 
+
+--------------------------------------------------------------------------------------------------
+Package Managers 
+37. Find-Package sysinternals -IncludeDependencies (it is used for finding package installing software and its dependencies on our PC) 
+38. Install-Package -name sysinternals (Install our choosen package which was in our example Chocolatey)  
+39. Get-Packege -name sysinternals (shows installed packages, we can check with this command if package is in place) 
+40. Uninstall-Package -name sysinternals (Uninstalls package from our system) 
+
+------------------------------------------------------------------------------------------------
+Devices Drivers and software management 
+driver is used to help our hardware devices interact with our operating system. In Windows, Microsoft groups all of the devices 
+and drivers on the computer together in a single Microsoft management console called the Device Manager. Most vendors or 
+computer hardware manufacturers will assign a special string of characters to their devices called a hardware ID. When Windows notices 
+that a new device has been connected, the first thing it'll do is ask the device that's been plugged in for its hardware ID.
+Once Windows has the new device's hardware ID, the OS uses it to search for the right driver for the device.
