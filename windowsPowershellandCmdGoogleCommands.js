@@ -76,3 +76,49 @@ Select-String linux *
 21. -FIlter (filter parameter when we want to look for example for specific file, text or 
 ls C:\Users\matus\Desktop -Recurse -Filter *.exe
 ls opens our users-matus-desktop, recurse looks inside of everything, filter filters our next command which is *.exe
+
+Input, Output, Pipeline 
+I/O streams = Input/Output streams 
+each process in windows has 3 different streams 
+a) standard in (stdin) - you provide input to the process (flows into the process) 
+b) standard out (stdout) - when process creates output, it adds data to the standard out stream (flows out of the process)
+c) standard error (stderr)
+At the CLI, the input that you provide through the keyboard goes to the standard in stream of the process 
+that you're interacting with. This happens whether that's PowerShell, a text editor, or anything else. 
+The process then communicates back to you by putting data into the Standard out stream, 
+which the CLI writes out on the screen that you're looking at.
+
+> (greater than operator) operator that lets us change where we want our standard output to go. 
+Instead of sending standard out to the screen, we can send a standard out to a file. 
+If the file exists, it'll overwrite it for us. Otherwise, it'll make a new file.
+
+>> (greater than, greater than operator) If we don't want to overwrite an existing file, 
+there's another redirector operator we can use to append information, greater than, greater than.
+
+22. echo (in powershell echo is alias for write output) 
+echo woof > \dog.txt (overwrites what in our folder that we choose and writes there our input) 
+echo woof >> \dog.txt (adds another woof to the folder that we chhose and doesnt overwrite data inside of it) 
+
+| (pipe operator) sends the output of one command to the input of another command
+
+Example: (taking together several simple tools and combining them together to do complex tasks)
+- (we have a .txt document) words.txt - it contaings 4 words = street, tree, blast, last 
+Now if we want to combine several tasks we use PIPE OPERATOR:
+cat words.txt | Select-String st (this takes output of words.txt and prints it in powerschell thanks to our second command SLS - words 
+containing st) 
+Now what we can do is this: 
+cat words.txt | Select-String st > st_words.txt 
+(we add greater than operator that takes our output and sends 
+it to the destination we choose, if the destination file is non existent in computer it will be created.)
+
+1> stdout output 
+2> stderr error output 
+
+Last is stderr (standar error) 
+
+$null special variable that contains the definition of nothing. You can think of it as a black hole for the purposes of redirection. 
+So let's redirect the error messages this time to $null. We use $Null when we dant want our error messages to be sent to a file.
+rm secure_file 2> $null. 
+Now, our output is filtered from error messages.
+When we want to delete secure files we get error messages, we can throw away these error messages or send them to other output 
+rm secure_file 2> errors.txt (sending error messages to new file) 
