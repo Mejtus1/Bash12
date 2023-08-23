@@ -231,3 +231,21 @@ you can make DNS request to it
 
 62. dig www.examlpe.com @localhost (we ask our DNS server which runs in local host for address for www.example.com
 dig command - query DNS servers and lets us see their answers 
+
+63. sudo parted -l (show what disks are connected to the computer) 
+
+64. du -h(disk usage of specified directory) 
+
+65. df (shows free disk space on entire machine) 
+
+66. ps -ef (shows processes running with their PID) shows all processes even other users running processes 
+UID = user ID who lounched the process
+PID = process ID 
+C = number of children processes 
+
+67. kill 10235 (terminates the process) 
+
+68. kill -KILL 10329 (terminates the process right away, could be dangerous, doesnt do any cleanup) it should be the last kill command 
+
+69. kill -TSTP 10454(turns process on pause, suspends it) (CTRL Z) 
+70. kill - CONT 10454 (turns process from pause to running) 
