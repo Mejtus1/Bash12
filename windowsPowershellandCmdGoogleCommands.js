@@ -181,3 +181,30 @@ and drivers on the computer together in a single Microsoft management console ca
 computer hardware manufacturers will assign a special string of characters to their devices called a hardware ID. When Windows notices 
 that a new device has been connected, the first thing it'll do is ask the device that's been plugged in for its hardware ID.
 Once Windows has the new device's hardware ID, the OS uses it to search for the right driver for the device.
+
+---------------------------------------------------------------------------------------------------
+Filesystems and Disks 
+Like most things in Windows, there are a few ways to get to disk management. We'll launch it by right clicking this PC, 
+selecting the "Manage" option then clicking the "Disk Management" console underneath the storage grouping. 
+We should see a display of both the disks and disk partitions along with 
+information about what type of file system they're formatted with.
+One super-cool property of the disk management console is that from here, you can also make modifications 
+to the disk and partitions on your computer.
+Messing with the partition or the Windows operating system is installed probably isn't the best way to demonstrate the partitioning 
+and formatting abilities of the disk management console. So let's use a USB drive instead. Once the drive has been inserted 
+and the plug and play service does the work of installing the driver for it, you should see it show up in the disk management 
+as an additional disk. The USB drive is currently formatted using the FAT32 file system. Let's go ahead and reformat 
+partition using NTFS instead. To do this, we right click on the partition and choose format.
+From this window, we can choose the volume label or name we'd like to give the disk. Let's just stick with USB drive. 
+You can also specify the file system which will change to NTFS.
+Well, the allocation unit size is the block size that will be used when you format 
+the partition in NTFS. In other words, this is the size of the chunks that the partition will be chopped into.
+You'll also see the option to perform a quick format is available. The difference between a quick format and a full format 
+is that in a full format, Windows will do a little extra work to scan the disk or USB drive in our case, for errors or bad sectors. 
+This extra work will make the formatting process a little longer.
+The last option on the format screen is whether or not to enable file or folder compression. 
+The decision to enable or disable compression comes with a trade-off. If you enable compression, your files and folders 
+will take up less space on the disk, but compressed files will need to be expanded when you open them.
+WE ARE GONNA DO THE SAME THING NOW BUT NOT IN GUT BUT IN POWERSHELL. 
+- Diskpart is a terminal based tool built for managing disks right from the command line.
+- We insert our usb 
