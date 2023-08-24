@@ -208,3 +208,17 @@ will take up less space on the disk, but compressed files will need to be expand
 WE ARE GONNA DO THE SAME THING NOW BUT NOT IN GUT BUT IN POWERSHELL. 
 - Diskpart is a terminal based tool built for managing disks right from the command line.
 - We insert our usb 
+
+41. Diskpart (This will open up another terminal window where the prompt should read Diskpart. 
+You can list the current discs on the system by typing "list disk")
+42. list disk (this shows us our disks) 
+Next we choose from previous command the disk we want to format (for usb drive the size of the disk will be smaller) 
+43. select disk 1 (selects disk one) 
+44. clean (cleans disk from any partition or formatting) 
+With the disk wiped, we now need to create a partition in it.
+45. create partition primary (with the disk wiped we now need to create a partition in it.) (creates blank partition in it) 
+46. select partition 1 (then we select the partition)
+47. active (now we will mark it as active by simply typing active) 
+48. format FS=NTFS label=my-thumb-drive qucik(format the disk with NTFS file system (or in other case with FAT32 file system / EXT4) 
+(format = format, FS = file system, NTFS = NTFS, label = name, quick= specified formatting type) 
+
