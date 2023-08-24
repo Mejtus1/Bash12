@@ -222,3 +222,17 @@ With the disk wiped, we now need to create a partition in it.
 48. format FS=NTFS label=my-thumb-drive qucik(format the disk with NTFS file system (or in other case with FAT32 file system / EXT4) 
 (format = format, FS = file system, NTFS = NTFS, label = name, quick= specified formatting type) 
 
+49. Get-Service wuavserv (status of the running service) wuavserv (windows update service) 
+50. Get-Service wuavserv | Format-List(shows what type of service it is and how its configured to run) 
+51. Get-Service (shows list of all services that are registerred in the sysetem) 
+
+52. notepad.exe (starts notepad) 
+
+53. Get-Process (shows list of running processes, process is code from application executed and runned) - you need this tool to find PID 
+PID is a 4 cypher number which tells you process number (if you want to stop process, you use this number to name it) 
+(signal = tell a process to get somthing done right away - for example, shut down program right away) 
+
+54. Get-Process 
+
+55. Get-Process | Sort CPU -descending | Select -first 3 -Property ID,ProcessName, CPU 
+
