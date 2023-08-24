@@ -225,3 +225,68 @@ CAT
 DOG
 GOLDFISH
 PARROT
+
+Extracting information from URLs
+You can also use curl in combination with the grep command to extract components of URL data by piping the output of curl to grep.
+Let's see how you can use this pattern to get the current price of Bitcoin (BTC) in USD.
+First, find a public URL API. In this example, you will use one provided by CoinStats.
+CoinStats provides a public API with no key required at https://api.coinstats.app/public/v1/coins/bitcoin\?currency\=USD, which returns some JSON about the current BTC price in USD.
+You can see what this looks like by entering the above link in your browser.
+Entering the following command returns the BTC price data, displayed as a JSON object:
+
+$ curl -s --location --request GET https://api.coinstats.app/public/v1/coins/bitcoin\?currency\=USD
+{
+  "coin": {
+    "id": "bitcoin",
+    "icon": "https://static.coinstats.app/coins/Bitcoin6l39t.png",
+    "name": "Bitcoin",
+    "symbol": "BTC",
+    "rank": 1,
+    "price": 57907.78008618953,
+    "priceBtc": 1,
+    "volume": 48430621052.9856,
+    "marketCap": 1093175428640.1146,
+    "availableSupply": 18877868,
+    "totalSupply": 21000000,
+    "priceChange1h": -0.19,
+    "priceChange1d": -0.4,
+    "priceChange1w": -9.36,
+    "websiteUrl": "http://www.bitcoin.org",
+    "twitterUrl": "https://twitter.com/bitcoin",
+    "exp": [
+      "https://blockchair.com/bitcoin/",
+      "https://btc.com/",
+      "https://btc.tokenview.com/"
+    ]
+  }
+}
+
+Note: For the purpose of this reading, we've reformatted the output to make it easier to interpret. The actual output is a continuous stream of text.
+
+The JSON field you want to grab here is "price": [numbers].[numbers]". To get this, you can use the following grep command to extract it from the JSON text:
+grep -oE "\"price\"\s*:\s*[0-9]*?\.[0-9]*"
+Copied!
+Let's break down the details of this statement:
+
+-o tells grep to only return the matching portion
+-E tells grep to be able to use extended regex symbols such as ?
+\"price\" matches the string "price"
+\s* matches any number (including 0) of whitespace (\s) characters
+: matches :
+[0-9]* matches any number of digits (from 0 to 9)
+?\. optionally matches a .
+Now that you have the grep statement that you need, you can pipe the BTC data to it using the curl command from above:
+
+$ curl -s --location --request GET https://api.coinstats.app/public/v1/coins/bitcoin\?currency\=USD |\
+    grep -oE "\"price\":\s*[0-9]*?\.[0-9]*"
+"price": 57907.78008618953
+
+Tip: The backslash \ character used here after the pipe | allows you to write the expression on multiple lines.
+
+Finally, to get only the value in the price field and drop the "price" label, you can use chaining to pipe the same output to another grep:
+$ curl -s --location --request GET https://api.coinstats.app/public/v1/coins/bitcoin\?currency\=USD |\
+    grep -oE "\"price\":\s*[0-9]*?\.[0-9]*" |\
+    grep -oE "[0-9]*?\.[0-9]*"
+57907.78008618953
+
+This now displays only the numerical price without the label.
