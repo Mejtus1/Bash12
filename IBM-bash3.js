@@ -194,3 +194,34 @@ uniq - prints a text file with any consecutive, repeated lines collapsed to a si
 sort pets.txt | uniq
 Since sort sorts all identical items consecutively, and uniq removes all consecutive duplicates, 
 combining the commands prints only the unique lines from pets.txt
+
+Applying a command to strings and files
+Some commands such as tr only accept standard input - normally text entered from your keyboard - but not strings or filenames.
+tr (translate) - replaces characters in input text
+tr [OPTIONS] [target characters] [replacement characters]
+
+In cases like this, you can use piping to apply the command to strings and file contents.
+With strings, you can use echo in combination with tr to replace all the vowels in a string with underscores _:
+$ echo "Linux and shell scripting are awesome\!" | tr "aeiou" "_"
+L_n_x _nd sh_ll scr_pt_ng _r_ _w_s_m_!
+
+To perform the complement of the operation from the previous example - or to replace all the consonants (any letter that is not a vowel) with an underscore - you can use the -c option:
+$ echo "Linux and shell scripting are awesome\!" | tr -c "aeiou" "_"
+_i_u__a_____e______i__i___a_e_a_e_o_e_
+
+With files, you can use cat in combination with tr to change all of the text in a file to uppercase as follows:
+$ cat pets.txt | tr "[a-z]" "[A-Z]"
+GOLDFISH
+DOG
+CAT
+PARROT
+DOG
+GOLDFISH
+GOLDFISH
+
+The possibilities are endless! For example, you could add uniq to the above pipeline to only return unique lines in the file, like so:
+$ sort pets.txt | uniq | tr "[a-z]" "[A-Z]"
+CAT
+DOG
+GOLDFISH
+PARROT
