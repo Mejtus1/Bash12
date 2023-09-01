@@ -400,3 +400,53 @@ Command Line Arguments
 Command line arguments are additional inputs that can be passed to a program when the program is run from a command line interface. These arguments are specified after the name of the program, and they can be used to modify the behavior of the program, provide input data, or provide output locations. Command line arguments are used to pass arguments to a shell script.
 For example, the following command provides two arguments, arg1, and arg2, that can be accessed from within your Bash script:
 $ ./MyBashScript.sh arg1 arg2
+
+
+
+
+Introduction to Advanced Bash Scripting
+
+Conditionals
+Conditionals, or if statements, are a way of telling a script to do something only under a specific condition.
+
+Bash script conditionals use the following if-then-else syntax:
+
+if [ condition ]
+then
+    statement_block_1  
+else
+    statement_block_2  
+fi
+
+If the condition is true, then Bash executes the statements in statement_block_1 before exiting 
+the conditional block of code. After exiting, it will continue to run any commands after the closing fi.
+Alternatively, if the condition is false, Bash instead runs the statements in statement_block_2 under the else line, 
+then exits the conditional block and continues to run commands after the closing fi.
+
+In the following example, the condition is checking whether the number of command-line arguments read by some Bash script, $#, is equal to 2.
+if [[ $# == 2 ]]
+then
+  echo "number of arguments is equal to 2"
+else
+  echo "number of arguments is not equal to 2"
+fi
+(Notice the use of the double square brackets, which is the syntax required for making integer comparisons in the condition [[ $# == 2 ]].)
+
+You can also make string comparisons. For example, assume you have a variable called string_var that has the value "Yes" assigned to it. Then the following statement evaluates to true:
+`[ $string_var == "True" ]`
+Notice you only need single square brackets when making string comparisons.
+
+You can also include multiple conditions to be satified by using the "and" operator && or the "or" operator ||. For example:
+if [ condition1 ] && [ condition2 ]
+then
+    echo "conditions 1 and 2 are both true"
+else
+    echo "one or both conditions are false"
+fi
+
+if [ condition1 ] || [ condition2 ]
+then
+    echo "conditions 1 or 2 are true"
+else
+    echo "both conditions are false"
+fi
