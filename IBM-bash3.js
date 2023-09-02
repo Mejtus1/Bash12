@@ -408,7 +408,6 @@ Introduction to Advanced Bash Scripting
 
 Conditionals
 Conditionals, or if statements, are a way of telling a script to do something only under a specific condition.
-
 Bash script conditionals use the following if-then-else syntax:
 
 if [ condition ]
@@ -450,3 +449,127 @@ then
 else
     echo "both conditions are false"
 fi
+
+
+Logical operators
+The following logical operators can be used to compare integers within a condition in an if condition block.
+==: is equal to
+
+If a variable a has a value of 2, the following condition evaluates to true; otherwise it evalutes to false.
+$a == 2
+
+!=: is not equal to
+If a variable a has a value different from 2, the following statement evaluates to true. If its value is 2, then it evalutes to false.
+a != 2
+
+
+<=: is less than or equal to
+If a variable a has a value of 2, then the following statement evaluates to true:
+a <= 3
+
+and the following statement evalutates to false:
+a <= 1
+
+Alternatively, you can use the equivalent notation -le in place of <=:
+a=1
+b=2
+if [ $a -le $b ]
+then
+   echo "a is less than or equal to b"
+else
+   echo "a is not less than or equal to b"
+fi
+
+
+
+Arithmetic calculations
+You can perform integer addition, subtraction, multiplication, and division using the notation $(()).
+For example, the following two sets of commands both display the result of adding 3 and 2.
+
+echo $((3+2))
+or
+a=3
+b=2
+c=$(($a+$b))
+echo $c
+
+Bash natively handles integer arithmetic but does not handle floating-point arithmetic. 
+As a result, it will always truncate the decimal portion of a calculation result.
+For example:
+echo $((3/2))
+prints the truncated integer result, 1, not the floating-point number, 1.5.
+
+The following table summarizes the basic arithmetic operators:
+Symbol	Operation
++	addition
+-	subtraction
+*	multiplication
+/	division
+
+Arrays
+The array is a Bash built-in data structure.
+An array is a space-delimited list contained in parentheses.
+To create an array, declare its name and contents:
+
+my_array=(1 2 "three" "four" 5)
+This statement creates and populates the array my_array with the items in the parentheses: 1, 2, "three", "four", and 5.
+
+You can also create an empty array by using:
+declare -a empty_array
+If you want to add items to your array after creating it, you can add to your array by appending one element at a time:
+
+my_array+="six"
+my_array+=7
+This adds elements "six" and 7 to the array my_array.
+
+By using indexing, you can access individual or multiple elements of an array:
+
+# print the first item of the array:
+echo ${my_array[0]}
+# print the third item of the array:
+echo ${my_array[2]}
+# print all array elements:
+echo ${my_array[@]}
+
+FOR LOOPS
+You can use a construct called a for loop along with indexing to iterate over all elements of an array.
+For example, the following for loops will continue to run over and over again until every element is printed:
+
+for item in ${my_array[@]}; do
+echo $item
+done
+
+or
+
+for i in ${!my_array[@]}; do
+  echo ${my_array[$i]}
+done
+
+The for loop requires a ; do component in order to cycle through the loop. Additionally, 
+you need to terminate the for loop block with a done statement.
+
+Another way to implement a for loop when you know how many iterations you want is as follows. 
+For example, the following code prints the number 0 through 6.
+
+N=6
+for (( i=0; i<=$N; i++ )) ; do
+  echo $i
+done
+
+You can use for loops to accomplish all sorts of things. For example, you could count the number of items in an array or sum up its elements, as the following Bash script does:
+
+#!/usr/bin/env bash
+# initialize array, count, and sum
+my_array=(1 2 3)
+count=0
+sum=0
+for i in ${!my_array[@]}; do
+  # print the ith array element
+  echo ${my_array[$i]}
+  # increment the count by one
+  count=$(($count+1))
+  # add the current value of the array to the sum
+  sum=$(($sum+${my_array[$i]}))
+done
+echo $count
+echo $sum
