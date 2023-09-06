@@ -629,3 +629,35 @@ elif [ $sum -gt $product ]
 then
    echo "The sum is greater than the product."
 fi
+
+---------------------------------------------------------------------------
+Crontab
+Crontab is Linux based application for scheudeling jobs 
+- it allows you to schedule jobs automatically at certain times
+- examples: load script at midnight every night 
+            Backup script to run every Sunday at 2AM 
+What is Cron, Crond and Crontab? 
+- Cron = service that runs jobs
+- Crond interprents "crontab files" (deamon)
+- Crontab = file containing jobs and schedule data
+
+Allowed values:
+minute	0-59
+hour	0-23, 0 = midnight
+day	1-31
+month	1-12
+weekday	0-6, 0 = Sunday
+
+crontab -e (opens editor)
+Job syntax
+  m  h  dom  mon  dow  command
+ 30 15  *    *     0   date >> sundays.txt (append the current day to the file sundays.txt at 15:30 every sunday)
+
+Example: 
+30 15 * * 0 date >> path/sunday.txt
+(append the current date to the file sundays.txt at 15:30 every sunday)
+0 0 * * * /cron_scripts/load_data.sh
+(specifies a load datashell script to run at midnight every dat)
+0 2 * * 0 /cron_scripts/backup_data.sh
+(run the backup data shell script at 2:00AM on sundays)
+next: CTRL+X to exit the editor and enter Y = yes save
