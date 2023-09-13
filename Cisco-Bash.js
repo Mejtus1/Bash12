@@ -152,3 +152,20 @@ ed     20392  20355  0 Jun07 ?         00:00:00     sshd: ed@pts/1
 ed     29615  12785  0 17:55 pts/0  00:00:00     grep --color=auto ssh.*
 
 ------------------------------------------------------------------------------
+Environment Variables and Shell Variables
+
+- linux provides mechanisms for creating variables that represent text strings you can access with the variable name rather than the string itself 
+- common use case for this functionality is to store file system locations that you can reference with the variable 
+- in fact, one of the more important variables that you will encounter frequently as you interact with the shell is a variable that is called $PATH 
+- this variable stores a list of the directories that the system searches when you execute a command
+
+ed@carl:~$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:
+/bin:/usr/games:/usr/local/games:/snap/bin 
+
+create shell variables
+ed@carl:~$ MYVAR="abc123"
+ed@carl:~$ echo $MYVAR
+abc123 
+- shell variable named MYVAR is created and assigned value abc123 
+- then, the echo command displays the value of the variable
