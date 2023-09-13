@@ -61,3 +61,25 @@ Linux treats file permissions as a hierarchy.
 and without execute permissions on the directory, you would not be able to open the files that are inside
 
 ------------------------------------------------------------------------------
+Editing File Properties
+
+chmod command has many options to modify file permissions
+
+With the symbolic method, you can use a symbol to represent the access class and the access type you want to modify
+You specify the operator to set the state of the access type by placing it in front of the access type symbol 
+When the access type and access class are chosen,  the selections are affected by the command 
+The exception to this rule is when you use the = operator. If you omit an access class, the a or all access class is implied.
+
+The example that follows sets the user access class to the file called MyFile.txt to read only:
+chmod u+r MyFile.txt 
+
+This example sets the access type to read and write for both the user and the group:
+chmod ug+rw MyFile.txt 
+
+The next example sets the access type to read and removes write access to the group and others:
+chmod go+r-w MyFile.txt 
+
+The last example sets all users access type to read only:
+chmod a=r MyFile.txt 
+
+------------------------------------------------------------------------------
