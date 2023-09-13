@@ -118,3 +118,37 @@ S: Process status
 %MEM: The percentage of physical memory being consumed by the process
 TIME+/–: The total CPU time the process has consumed since it started   
 COMMAND: The name of the process
+
+------------------------------------------------------------------------------
+The ps Command
+- to extract more specific information about processes
+
+An example of using the ps:
+ed@carl:~$ ps
+  PID TTY          TIME          CMD
+20393 pts/1    00:00:00   bash
+30251 pts/1    00:00:00   ps 
+
+add more information about the processes:
+ed@carl:~$ ps –f
+UID        PID      PPID    C   STIME   TTY       TIME           CMD
+ed       20393   20392   0   12:41    pts/1    00:00:00    –bash
+ed       30387    20393  0   13:20    pts/1    00:00:00      ps -f 
+Using the -f option added the following columns:
+UID: User ID of the owner of the process
+PPID: Parent Process ID
+C: CPU utilization percentage
+STIME: Process start time
+
+-e lists every process and 
+-f displays the output in the full format
+- grep command = filter
+ed@carl:~$ ps -ef | grep ssh.*
+root     892           1    0 Jun04 ?        00:00:00     /usr/sbin/sshd –D
+root   12698   892    0 Jun07 ?        00:00:00     sshd: ed [priv]
+ed     12784  12698  0 Jun07 ?        00:00:00     sshd: ed@pts/0
+root   20355   892     0 Jun07 ?        00:00:00     sshd: ed [priv]
+ed     20392  20355  0 Jun07 ?         00:00:00     sshd: ed@pts/1
+ed     29615  12785  0 17:55 pts/0  00:00:00     grep --color=auto ssh.*
+
+------------------------------------------------------------------------------
