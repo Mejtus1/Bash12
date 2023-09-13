@@ -83,3 +83,38 @@ The last example sets all users access type to read only:
 chmod a=r MyFile.txt 
 
 ------------------------------------------------------------------------------
+Displaying Processes and Process Threads
+
+top
+The top application screen is divided into two sections:
+- upper portion lists general information regarding system resource utilization
+
+The top application screen is divided into two sections:
+The upper portion lists general information regarding system resource utilization as follows: 
+- first row lists system up time and system load average
+- second row gives you general information about the processes running on the host
+- third row lists various aspects of how the CPU is being utilized
+us: user space processes 
+sy: system/kernel processes
+id: system idle time
+
+The lower section shows details of the top running processes:
+The columns of information that is displayed by top are as follows:
+PID: Process ID number. When a process is started, it is given a unique PID that identifies that process to the system. If you ever need to kill a process, you can refer to the process by its PID.
+User: The user name of the process’s owner
+PR: The scheduling priority of the process
+NI: The process’s nice value. 
+VIRT: Virtual memory
+RES: Resident, non-swapped physical memory
+SHR: Shared memory
+S: Process status
+    D: Uninterruptible sleep (stuck waiting for input or output)
+    R: Running (executing normally)
+    S: Sleeping (waiting internally)
+    T: Stopped by job control (stopped with a signal from the kernel)
+    t: Stopped by debugger (another process has full control)
+    Z: Zombie (completed processes that are not yet removed from the kernel's process table)
+%CPU: The estimated percentage of CPU resources being consumed by the process
+%MEM: The percentage of physical memory being consumed by the process
+TIME+/–: The total CPU time the process has consumed since it started   
+COMMAND: The name of the process
