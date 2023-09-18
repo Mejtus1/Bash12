@@ -324,3 +324,28 @@ ls: cannot access 'abc123.txt': No such file or directory
 ls: cannot access 'abc123.txt': No such file or directory 
 
 ------------------------------------------------------------------------------
+Piping Command Output
+- send the output of one command to another command which is a process
+
+ed@carl:~$ ps -ef | grep ssh
+root      892      1     0   Jun04 ?       00:00:00    /usr/sbin/sshd –D
+root     12698    892    0   Jun07 ?       00:00:00    sshd: ed [priv]
+ed       12784   12698   0   Jun07 ?       00:00:00    sshd: ed@pts/0
+root     20355    892    0   Jun07 ?       00:00:00    sshd: ed [priv]
+ed       20392   20355   0   Jun07 ?       00:00:00    sshd: ed@pts/1
+ed       32560   20393   0   16:45 pts/1   00:00:00    grep --color=auto ssh 
+
+- the output was piped out of the ps command to the grep command
+- filter lengthy output from a command through a grep filter
+
+- there can be piped as many commands together as possible 
+ed@carl:~$ ps -ef | grep ssh | sort -d
+ed       12784    12698    0   Jun07 ?         00:00:00    sshd: ed@pts/0
+ed       20392    20355    0   Jun07 ?         00:00:00    sshd: ed@pts/1
+ed        5958     20393   0   17:08 pts/1     00:00:00    grep --color=auto ssh
+root     12698    892      0   Jun07 ?         00:00:00    sshd: ed [priv]
+root     20355    892      0   Jun07 ?         00:00:00    sshd: ed [priv]
+root       892     1       0   Jun04 ?         00:00:00    /usr/sbin/sshd -D 
+- sort the output alphabetically 
+
+------------------------------------------------------------------------------
