@@ -169,3 +169,14 @@ ed@carl:~$ echo $MYVAR
 abc123 
 - shell variable named MYVAR is created and assigned value abc123 
 - then, the echo command displays the value of the variable
+
+------------------------------------------------------------------------------
+Shutting Down the System
+
+shutdown --help = shows command prompts for shutdown command
+shutdown -r now = shuts down the system immediately and reboots it 
+shutdown +1 = schedule a shutdown of a system after 1 hour 
+shutdown -c = cancel previous command
+systemctl reboot = reboots the system (seccond option for shutdown, reboot for devices running systemd)
+
+------------------------------------------------------------------------------
