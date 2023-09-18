@@ -304,3 +304,23 @@ ed@carl:~$ echo "More test data" >> path.txt (adds text to path.txt)
 ed@carl:~$ cat path.txt 
 Test data
 More test data 
+
+- output of the command was directed to the output.txt file, a message was sent to the display 
+- this message did come from STDERR 
+- couple of ways that you can manage this problem
+- One way is to simply discard the message if it is not important to you, as follows:
+ed@carl:~$ ls –al abc123.txt > output.txt 2> /dev/null
+ed@carl:~$ 
+
+- however, messages that are produced by STDERR could be used to troubleshoot a problem. 
+- following is an example of how you can configure such an outcome:
+ed@carl:~$ ls –al abc123.txt > output.txt 2> errors.txt
+ed@carl:~$ cat errors.txt 
+ls: cannot access 'abc123.txt': No such file or directory 
+
+ed@carl:~$ ls –al abc123.txt > output.txt 2>> errors.txt (using >> to not overwrite directed data)
+ed@carl:~$ cat errors.txt 
+ls: cannot access 'abc123.txt': No such file or directory
+ls: cannot access 'abc123.txt': No such file or directory 
+
+------------------------------------------------------------------------------
