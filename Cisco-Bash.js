@@ -270,4 +270,37 @@ MyTestApp (ouput: no command found)
 We have to use ./MyTestApp (now it executes that command for us)
 
 ------------------------------------------------------------------------------
+STDIN, STDOUT, STDERR
+STDIN = our input from keyboard
+STDOUT = output comming back from the system, (the output can come to a file or other system)
+STDERR = output that comes from the error message (either display or log file for troubleshooting)
 
+To test STDIN, you can use the cat command. The cat command is used to display the contents of the file 
+you specify as a parameter to the command. It dumps the contents of the file to STDOUT, which is the screen 
+if you don’t direct the output elsewhere. If you don’t specify a file as the input source, the cat command takes 
+its input from the default input device which is the keyboard. In this example, STDIN represents what you type at the keyboard:
+
+ed@carl:~$ cat
+test
+test
+123
+123 
+
+Directing command output 
+- command’s output can be directed 
+- echo command normally echoes, or copies, the value specified as the command option to the screen
+ed@carl:~$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+- you can direct the STDOUT to a file instead
+ed@carl:~$ echo $PATH > path.txt 
+- does not produce output to the screen
+- created path.txt file (with output of echoed PATH variable)
+ed@carl:~$ cat path.txt 
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin 
+
+To not overwrite the data in path.txt file we use >> (double greater than symbols)
+ed@carl:~$ echo "Test data" > path.txt (overwrites the old data in path.txt)
+ed@carl:~$ echo "More test data" >> path.txt (adds text to path.txt)
+ed@carl:~$ cat path.txt 
+Test data
+More test data 
