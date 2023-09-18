@@ -180,3 +180,44 @@ shutdown -c = cancel previous command
 systemctl reboot = reboots the system (seccond option for shutdown, reboot for devices running systemd)
 
 ------------------------------------------------------------------------------
+Displaying Open Files
+- it is important from point of troubleshooting to monitor 
+- linux tends to treat everything as if it is a file, including devices, 
+- there is also possibility to list things such as device file references
+                                                    directories
+                                                    even network connections
+lsof = lists every open file
+
+ed@carl:~$ sudo lsof /var/log/syslog
+COMMAND  PID   USER     FD   TYPE  DEVICE  SIZE/OFF       NODE      NAME
+rsyslogd       651   syslog    5w   REG      8,1          161355    4063351  /var/log/syslog 
+
+Some of the key features of this output include the following:
+Command: The name of the process using the file
+PID: The process ID of the command using the file
+User: The user running the process
+FD: File descriptor: a reference number that is used by the kernel to identify an open file
+Type: Identifies the type of file
+Device: Device number that represents the device being called to perform the I/O
+Size/Off: The file size or memory offset
+Node: The file’s INODE number, which is used to uniquely identify the file on the file system
+Name: The path and filename
+
+lsof can also be useful for tracking the state of network connections
+ed@carl:~$ sudo lsof -i TCP -s TCP:LISTEN
+COMMAND    PID   USER    FD   TYPE  DEVICE  SIZE/OFF   NODE NAME
+sshd       892     root  3u   IPv4   19766      0t0    TCP *:ssh (LISTEN)
+sshd       892     root  4u   IPv6   19768      0t0    TCP *:ssh (LISTEN)
+vsftpd     898     root  3u   IPv6   13144      0t0    TCP *:ftp (LISTEN)
+dnsmasq    992   nobody  5u   IPv4   13299      0t0    TCP carl:domain (LISTEN)
+xrdp       1782    xrdp  6u   IPv4   18695      0t0    TCP *:3389 (LISTEN)
+xrdp-sesm  1784    root  6u   IPv4   19622      0t0    TCP localhost:3350 (LISTEN) 
+
+ed@carl:~$ sudo lsof -i TCP -s TCP:ESTABLISHED
+COMMAND   PID    USER   FD   TYPE  DEVICE  SIZE/OFF  NODE NAME
+sshd     12698   root   3u   IPv4  2710167   0t0   TCP 192.168.7.88:ssh->192.168.7.119:53743 (ESTABLISHED)
+sshd     12784    ed    3u   IPv4  2710167   0t0   TCP 192.168.7.88:ssh->192.168.7.119:53743 (ESTABLISHED)
+sshd     20355   root   3u   IPv4  2728447   0t0   TCP 192.168.7.88:ssh->192.168.7.119:54225 (ESTABLISHED)
+sshd     20392    ed    3u   IPv4  2728447   0t0   TCP 192.168.7.88:ssh->192.168.7.119:54225 (ESTABLISHED) 
+
+------------------------------------------------------------------------------
