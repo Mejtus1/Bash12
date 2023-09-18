@@ -234,6 +234,9 @@ sda          0.18   1.14         4.89          691475    2978716
 - upper portion of the output shows general CPU utilization statistics
 - lower portion of the output lists the devices that are producing I/O
 
+ed@carl:~$ vmstat
+- outputs memory utilization relative to swap activity
+
 Monitoring Memory Utilization
 
  ed@carl:~$ ps -o maj_flt 892
@@ -242,4 +245,29 @@ Monitoring Memory Utilization
 - a major page fault happens when a process requests memory resources from the system
 - those resources are not available at the time of the request, which causes the system to reach out to the swap space so that it can get the resources that it needs
 
+
 ------------------------------------------------------------------------------
+Variables
+ed@carl:~$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin 
+
+we cannot run our script if we are not in these paths, 
+we are currently in /home/parrallels/ path, so to call a variable we need to ./ name of the application to run the executable 
+ed@carl:~$ ./ name of the application to run the executable
+
+nano MyTestApp
+(NANO text editor opens)
+#!bin/bash/
+#This is test app 
+echo "Hello cyber security experts"
+
+(file name to save = MyTestApp)
+chmod 755 MyTestApp (we make it an executable)
+ls -l MyTestApp (rwx for owner)
+If we just try to execute it at this point 
+MyTestApp (ouput: no command found)
+
+We have to use ./MyTestApp (now it executes that command for us)
+
+------------------------------------------------------------------------------
+
