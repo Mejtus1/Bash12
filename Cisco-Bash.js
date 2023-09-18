@@ -221,3 +221,25 @@ sshd     20355   root   3u   IPv4  2728447   0t0   TCP 192.168.7.88:ssh->192.168
 sshd     20392    ed    3u   IPv4  2728447   0t0   TCP 192.168.7.88:ssh->192.168.7.119:54225 (ESTABLISHED) 
 
 ------------------------------------------------------------------------------
+Monitoring I/O
+
+iostat = get a snapshot of current I/O activity
+
+ed@carl:~$ iostat 2
+Linux 4.4.0-22-generic (carl) 06/11/2016 _x86_64_(4 CPU)
+avg-cpu:  %user   %nice %system   %iowait    %steal     %idle
+1.88      0.00    0.22            0.00       0.00       97.90
+Device:      tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+sda          0.18   1.14         4.89          691475    2978716 
+- upper portion of the output shows general CPU utilization statistics
+- lower portion of the output lists the devices that are producing I/O
+
+Monitoring Memory Utilization
+
+ ed@carl:~$ ps -o maj_flt 892
+ MAJFL
+    11 
+- a major page fault happens when a process requests memory resources from the system
+- those resources are not available at the time of the request, which causes the system to reach out to the swap space so that it can get the resources that it needs
+
+------------------------------------------------------------------------------
