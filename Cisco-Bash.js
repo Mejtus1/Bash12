@@ -558,3 +558,98 @@ rtt min/avg/max/mdev = 0.138/0.618/0.980/0.354 ms
 - this simple test confirms that the host is able to communicate over the network
 
 ------------------------------------------------------------------------------
+SSH 
+
+- here will be shown the most basic function for SSH = remote secure connection to the host 
+
+ssh <username>@<remote host>
+
+user@computer:~$ ssh ed@192.168.7.88
+
+ed@192.168.7.88's password:
+Welcome to Ubuntu 16.04 LTS (GNU/Linux 4.4.0-22-generic x86_64)
+
+195 packages can be updated.
+45 updates are security updates.
+
+Last login: Sun Jun 16 16:29:04 2019 from 192.168.7.141
+ed@carl:~$  
+
+- upon issuing the ssh command, you are prompted for the password of the user account on the remote system
+- if the credentials are valid, you are presented with any system messages, followed by the command shell prompt of the remote host
+- after valid credentials you can issue commands on the remote machine 
+
+ed@carl:~$ exit
+logout
+
+Connection to 192.168.7.88 closed.
+- exit the session
+
+first login to a host will present a message asking to accept the public key of the remote host 
+
+ed@carl:~$ ssh ed2@192.168.7.141
+
+The authenticity of host '192.168.7.141 (192.168.7.141)' can't be established
+ECDSA key fingerprint is SHA256:AZ4v3ThpS/R0nPVcaa1I/614UDgM4Ir49TwCnXs/oQI
+Are you sure you want to continue connecting (yes/no)? yes
+
+Warning: Permanently added '192.168.7.141' (ECDSA) to the list of known hosts.
+Password:
+
+Last login: Sun Jun 16 06:59:05 2019
+user@computer:~ ed2$ 
+
+- if the host is trusted the remote host, enter yes 
+- on the first connection to a new host, by independently verifying host key fingerprint 
+- trusted network administrator could run command to view ssh key of host to verify it 
+
+user@computer:~$ ssh-keygen -l -f /etc/ssh/ssh_host_ecdsa_key.pub
+256 SHA256: AZ4v3ThpS/R0nPVcaa1I/614UDgM4Ir49TwCnXs/oQI /etc/ssh/ssh_host_edcsa_key.pub (EDCSA) 
+
+- once the host key is comfirmed in the prompt above, 
+it is saved in home folder at ~.ssh/known_hosts.  
+- this file is read by SSH before asking for your username or password
+
+------
+-Assuming you previously used SSH to connect the host at the IP address 192.168.7.141, 
+but the host has since been replaced by a different host under the same IP address 
+- keys of the new host would be different than the original host
+- warning will be displayed about possible impersonation of the original host 
+
+ed@carl:~$ ssh ed@192.168.7.141
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+
+The fingerprint for the ECDSA key sent by the remote host is
+SHA256:nZUEmqin5WGn3c72jF9vRQ0Kaj33jQwjuWXCmcjiXMs.
+
+Please contact your system administrator.
+Add correct host key in /home/ed/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/ed/.ssh/known_hosts:6
+
+remove with:
+ssh-keygen -f "/home/ed/.ssh/known_hosts" -R 192.168.7.141
+
+ECDSA host key for 192.168.7.141 has changed and you have requested strict checking.
+Host key verification failed.
+ed@carl:~$  
+
+- the messsage indicates potential for malicious situaction
+- if there is a change, the guide to remove old host and add new is automatically displayed
+
+
+Securely Copying Files Between Hosts
+
+scp <source path to file> <remote user>@<remote host>: <remote destination path> 
+Similarly, to copy a file from a remote system to the local system, swap the parameters:
+scp <remote user>@<remote host>:<remote path to file> <destination path> 
+
+The example:
+ed@ned:~$ scp Firefox_wallpaper.png ed@192.168.7.88:
+------------------------------------------------------------------------------
