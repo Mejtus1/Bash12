@@ -349,3 +349,83 @@ root       892     1       0   Jun04 ?         00:00:00    /usr/sbin/sshd -D
 - sort the output alphabetically 
 
 ------------------------------------------------------------------------------
+The awk command
+- powerful text processing tool
+- mostly used as a data extraction
+
+- output of the ps command piped to a grep command filtering on the ssh string 
+ed@carl:~$ ps -ef | grep ssh
+root       892        1         0    Jun04 ?         00:00:00     /usr/sbin/sshd –D
+root     12698    892     0    Jun07 ?         00:00:00     sshd: ed [priv]
+ed       12784   12698   0    Jun07 ?         00:00:00    sshd: ed@pts/0
+root     20355    892     0    Jun07 ?          00:00:00    sshd: ed [priv]
+ed       20392    20355  0    Jun07 ?         00:00:00    sshd: ed@pts/1
+ed       32560    20393  0   16:45 pts/1   00:00:00    grep --color=auto ssh 
+
+- using awk to further refine the ps output 
+ed@carl:~$ ps -ef | grep ssh | awk '{print $1 "\t" $2 "\t" $8}'
+root   892/usr/sbin/sshd
+root   12698  sshd:
+ed     12784  sshd:
+root   20355  sshd:
+ed     20392  sshd: 
+- $1 it represents the first field
+- \t. This construct represents a tab
+- $8 represents the eighth field
+
+
+The sed Command
+- sed command, like awk, is a very powerful tool that is implemented in Linux 
+- it is a language unto itself, but can also be used from the command line
+- sed command is a stream editing tool that performs the action you configure on lines of text that are read in from files or STDIN
+
+ed@carl:~$ echo "left" | sed -e 's/left/right/'
+right 
+
+- echo command produced the word left
+- rather than sending the output of echo to STDOUT, it was piped to the sed command, 
+which is configured to look for the string left and replace it with the string right
+- in the line that follows the command, the resulting string is right.
+
+In this next example, use sed to normalize a file. The file names.txt contains the following:
+ed@carl:~$ cat names.txt 
+mr. Jones
+mr. Smith
+Mr. Rogers
+mr. Mister 
+
+The goal list is to normalize the instances of mr., so that they all appear with an upper case M
+ed@carl:~$ sed -e 's/[Mm]r/Mr/' names.txt
+Mr. Jones
+Mr. Smith
+Mr. Rogers
+Mr. Mister 
+- input pattern uses a regular expression to look for the letter m, in either upper or lower case
+followed by the letter r
+- once found, it replaces the string with Mr. 
+
+Another way to use sed is to delete lines from an input source that match criteria that you specify.
+sed –e ‘1d ; 3d’ names.txt
+mr. Smith
+mr. Mister 
+ed@carl:~$ sed -e '1,3d' names.txt
+mr. Mister
+
+This example looks for lines that contain the string mr in lower case and deletes them
+ed@carl:~$ sed -e '/mr/d' names.txt 
+Mr. Rogers 
+
+--
+To remove the blank lines and make the file more consistent, use the following sed command:
+ed@carl:~$ sed -e '/^$/d' names.txt 
+mr. Jones
+mr. Smith
+Mr. Rogers
+mr. Mister 
+
+- regular expression: /^$/ is used
+- caret (^) is a metacharacter that represents the beginning of the line
+- dollar sign symbol ($) is a metacharacter that represents the end of the line
+- there is nothing between the two, it is effectively looking for a blank line
+- then follow the regular expression with the d option to delete the lines that match
+
