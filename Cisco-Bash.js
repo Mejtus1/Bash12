@@ -429,3 +429,46 @@ mr. Mister
 - there is nothing between the two, it is effectively looking for a blank line
 - then follow the regular expression with the d option to delete the lines that match
 
+------------------------------------------------------------------------------
+Text editors 
+
+The vi command
+- editing text files
+- vi application was devised as a full screen visual interface to line-oriented text
+
+ed@ubuntu:~$ vi MyFile.txt 
+The vi application opens a  full-screen editor page.
+
+ ~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+"MyFile.txt" [New File]                                       0,0-1         All  
+
+- when you are in insert mode, you can begin entering text
+- when you finish making edits, press Esc to exit insert mode
+i: Enter Insert mode. Press Esc to exit Insert mode and return to command mode.
+
+:w: Write your changes to the file.
+:q: Quit vi. If edits are pending, you will get a warning to let you know.
+:q!: Quit without saving which exits the application immediately and any pending edits are lost.
+:wq: Write edits to the file and quit the application.
+
+Nano text editor 
+- Nano is a simple, easy to use text editor
+- Nano's weakness is its limited feature set, it is not as powerful as vi
+
+------------------------------------------------------------------------------
