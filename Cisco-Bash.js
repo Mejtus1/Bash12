@@ -653,3 +653,43 @@ scp <remote user>@<remote host>:<remote path to file> <destination path>
 The example:
 ed@ned:~$ scp Firefox_wallpaper.png ed@192.168.7.88:
 ------------------------------------------------------------------------------
+Managing Services in SysV Environments
+- “bouncing” the service =  stop and start the service so the updated configurations can be read and implemented by the operating system
+- most modern implementations of Linux use systemd to manage services
+
+ed@carl:~$ ps -ef | grep ftp
+root      7929     1  0 10:50 ?        00:00:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+ed        7969  5288  0 10:51 pts/0    00:00:00 grep --color=auto ftp
+
+
+ed@carl:~$ sudo service vsftpd stop
+ed@carl:~$ ps -ef | grep ftp 
+ed        8262  5288  0 10:52 pts/0    00:00:00 grep --color=auto ftp
+
+
+ed@carl:~$ sudo service vsftpd start
+
+ed@carl:~$ ps -ef | grep ftp
+root      8377     1  0 10:52 ?        00:00:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+ed        8426  5288  0 10:52 pts/0    00:00:00 grep --color=auto ftp 
+
+------
+Systemd Service Manager
+- systemd is rapidly becoming the standard for system initialization and system management
+- common location for systemd unit files
+/usr/lib/systemd/system 
+
+systemctl command
+- manage units
+
+systemctl [command] [unit name] 
+
+sudo systemctl start vsftpd       : Starts the VS FTP daemon
+sudo systemctl stop vsftpd        : Stops the VS FTP daemon
+sudo systemctl restart vsftpd     : Restarts the VS FTP daemon
+
+sudo systemctl reload vsftpd      : Reloads the VS FTP daemon configuration files without stopping the service
+sudo systemctl daemon-reload      : Reloads the systemd configuration and dependencies without stopping the 
+                                    services that systemd is managing
+
+------------------------------------------------------------------------------
