@@ -693,3 +693,89 @@ sudo systemctl daemon-reload      : Reloads the systemd configuration and depend
                                     services that systemd is managing
 
 ------------------------------------------------------------------------------
+The lsof Command in Networking 
+- stands for "list open files"
+- primarily concerned with open files and the processes that are using them
+
+sudo lsof –i: List files that are associated with an internet address.
+sudo lsof –i tcp: List files that are associated with an internet address using the TCP protocol.
+sudo lsof –i tcp:80: List files that are associated with an internet address using the TCP protocol under port 80.
+sudo lsof –i udp:53 -P: List files that are  associated with an internet address using the UDP protocol under port 53. The –P (upper case) lists the ports with their numeric values rather than symbolically. 
+sudo lsof –i @192.168.222.1: List files that are associated with the specified internet address. The address could be either the source or destination address.
+sudo lsof –i @192.168.222.1:21 -P: List files that are associated with the specified internet address and port. The address could be either the source or destination address. 
+- the –P (upper case) lists the ports with their numeric values rather than symbolically (for example,. "443" instead of "https").
+
+suda netstat -a46 (shows IPV4 and IPV6 -a = any connections)
+sudo netstat -lt (shows listening TCP connections)
+sudo netstat -lun (listen, UDP, n = Numeric format)
+
+------------------------------------------------------------------------------
+DNS in Linux 
+/etc/hosts = DNS file containing DNS info (8.8.8.8. Google.com)
+
+/etc/nsswitch.conf = defines where the OS needs to go to fetch information it needs
+- first check /etc/hosts/
+- second check mdns4_minimal (reslove multicast DNS if ends in .local)
+If NOTFOUND returns from mdns4, come back to this list and return another message
+- last resolve with configured DNS servers
+
+----
+Testing Name Resolution
+
+nslookup 
+ 
+ed@ubuntu:/usr/lib/systemd$ nslookup cisco.com
+Server:127.0.1.1
+Address:127.0.1.1#53
+
+Non-authoritative answer:
+Name:cisco.com
+Address: 72.163.4.161 
+
+- add the IP address of a different DNS server
+- forwarding your request to that server
+
+ed@ubuntu:/usr/lib/systemd$ nslookup cisco.com 8.8.8.8
+Server:8.8.8.8
+Address:8.8.8.8#53
+
+Non-authoritative answer:
+Name:cisco.com
+Address: 72.163.4.161 
+
+- nslookup command also allows you to perform reverse DNS lookups
+ed@ubuntu:/usr/lib/systemd$ nslookup 72.163.4.161
+
+Server:127.0.1.1
+Address:127.0.1.1#53
+
+Non-authoritative answer:
+161.4.163.72.in-addr.arpaname = www1.cisco.com 
+
+
+whois
+
+ed@ubuntu:/usr/lib/systemd$ whois 72.163.4.161
+#
+# ARIN WHOIS data and services are subject to the Terms of Use
+# available at: https://www.arin.net/whois_tou.html
+#
+# If you see inaccuracies in the results, please report at
+# https://www.arin.net/public/whoisinaccuracy/index.xhtml
+#
+#
+# The following results may also be obtained via:
+# https://whois.arin.net/rest/nets;q=72.163.4.161?showDetails=true&showARIN=false&showNonArinTopLevelNet=false&ext=netref2
+#
+NetRange:       72.163.0.0 - 72.163.255.255
+CIDR:           72.163.0.0/16
+NetName:        CISCO-GEN-7
+NetHandle:      NET-72-163-0-0-1
+Parent:         NET72 (NET-72-0-0-0-0)
+NetType:        Direct Allocation
+OriginAS:       
+Organization:   Cisco Systems, Inc. (CISCOS-2)
+RegDate:        2006-10-24
+Updated:        2015-08-13
+Ref:            https://whois.arin.net/rest/net/NET-72-163-0-0-1 
+------------------------------------------------------------------------------
