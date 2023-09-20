@@ -472,3 +472,89 @@ Nano text editor
 - Nano's weakness is its limited feature set, it is not as powerful as vi
 
 ------------------------------------------------------------------------------
+Networking 
+
+ed@ned:~$ ifconfig -a
+- –a option instructs the system to output information on all the interfaces even if they are down
+- displays IP information 
+
+Configuring ethernet interface
+ed@carl:~$ sudo ifconfig ens160 192.168.7.73
+
+ed@carl:~$ ifconfig ens160
+inet addr:192.168.7.73
+the ifconfig command was used to set the IP address for the ens160 interface
+
+Viewing and Configuring Routes
+
+ed@ned:~$ netstat -rn
+Kernel IP routing table
+
+Destination      Gateway         Genmask         Flags   MSS  Window  irtt   Iface
+0.0.0.0          192.168.7.1     0.0.0.0         UG      0    0       0      ens160
+192.168.7.0      0.0.0.0         255.255.255.0   U       0    0       0      ens160 
+
+- netstat command with the –rn options as shown displays the routing table with numeric IP addresses
+- first route represents the default route 
+The IP address 0.0.0.0 with a netmask of 0.0.0.0 represents any IP address 
+The gateway value represents where to send traffic with destinations that are not known to the device
+- second route represents a static route for the local network 
+So, any traffic with a destination of 192.168.7.0/24 is not sent to a gateway
+Rather, it is transmitted to hosts in the local network segment
+
+In a new installation, you may need to set the default gateway 
+The syntax for doing so is as follows:
+
+ed@ned:~$ sudo route add default gw 192.168.7.1 
+
+- term "default" in the example represents the 0.0.0.0 IP address, 
+- the gw option followed by an IP address is the gateway
+
+
+Statically set a route to a network
+
+ed@ned:~$ sudo route add -net 192.168.133.0 netmask 255.255.255.0 gw 192.168.7.200
+ed@ned:~$ netstat -rn
+
+Kernel IP routing table
+Destination      Gateway         Genmask        Flags   MSS   Window  irtt   Iface
+0.0.0.0          192.168.7.1     0.0.0.0        UG       0     0      0      ens160
+192.168.7.0      0.0.0.0         255.255.255.0  U        0     0      0      ens160
+192.168.133.0    192.168.7.200   255.255.255.0  UG       0     0      0      ens160 
+
+Structure of the route command for entering the static route is as follows:
+route: The route command
+add: The option to indicate that you wish to add a route
+-net: The option to indicate that the destination of the route is a network
+192.168.133.0: The IP address of the destination network
+netmask 255.255.255.0: The netmask value for the destination network
+gw 192.168.7.200: The gateway IP address of where to send traffic that is destined for the 192.168.133.0 network
+
+ed@ned:~$ sudo route del -net 192.168.133.0 netmask 255.255.255.0 gw 192.168.7.200 
+ed@ned:~$ netstat -rn
+
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags    MSS   Window  irtt  Iface
+0.0.0.0         192.168.7.1     0.0.0.0         UG       0     0       0     ens160
+192.168.7.0     0.0.0.0         255.255.255.0   U        0     0       0     ens160 
+
+- in the example, the route created previously was deleted.
+
+
+Testing Connectivity
+"ping command" 
+- test connectivity to other hosts
+
+ed@ned:~$ ping 192.168.7.88
+PING 192.168.7.88 (192.168.7.88) 56(84) bytes of data.
+64 bytes from 192.168.7.88: icmp_seq=1 ttl=64 time=0.980 ms
+64 bytes from 192.168.7.88: icmp_seq=2 ttl=64 time=0.737 ms
+64 bytes from 192.168.7.88: icmp_seq=3 ttl=64 time=0.138 ms
+^C
+--- 192.168.7.88 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2000ms
+rtt min/avg/max/mdev = 0.138/0.618/0.980/0.354 ms 
+
+- this simple test confirms that the host is able to communicate over the network
+
+------------------------------------------------------------------------------
